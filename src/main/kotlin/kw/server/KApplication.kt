@@ -167,8 +167,14 @@ public open class KApplication() {
     }
 
     public fun startDebug() {
-        val compiler=CompileView(File("sites/welcome/src/main/kweb-kotlin/views"))
-       /* if (compiler.viewOutdated("layout"))
+
+
+       //I did not manage how to compile views here.
+       //for now, use CompileViewTest#compileCreateOutFile
+       //in order to compile layout.html.kt
+
+       /* val compiler=CompileView(File("sites/welcome/src/main/kweb-kotlin/views"))
+        if (compiler.viewOutdated("layout"))
             compiler.recompile("layout")
         else
         {*/
@@ -183,7 +189,7 @@ public open class KApplication() {
             File("html/templates/namespace.class").copyTo(dest2)
 
 
-//        }
+       /* }*/
 
         rest("(.*)") {
             get{Renderer404(urlArguments[0])}

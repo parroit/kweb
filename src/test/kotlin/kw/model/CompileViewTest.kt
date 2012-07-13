@@ -80,7 +80,7 @@ public class CompileViewTest {
     }
 
     Test public fun compileCreateOutFile(){
-        val file = File(compiler.outFolder,"namespace$${viewName}$1.class")
+        val file = File(compiler.outFolder,"templates/namespace$${viewName}$1.class")
         if (file.exists())
             Assert.assertTrue(file.delete())
 

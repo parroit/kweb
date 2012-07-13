@@ -1,7 +1,7 @@
 package templates
 import kw.views.*
 
-fun layout(content:() -> String) = view { "" }
+fun layout(content:() -> String) = htmlView { "" }
 /*
 <head>
     <title>@title</title>

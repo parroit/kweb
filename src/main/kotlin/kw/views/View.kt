@@ -60,6 +60,18 @@ public class view(private val viewContent:RequestResponse.()->String):Renderer {
         requestResponse.response.setHeader(CONTENT_TYPE, "text/html; charset=UTF-8");
     }
 }
+public class htmlView(private val viewContent:RequestResponse.()->String):Renderer {
+    public override fun render(requestResponse: RequestResponse){
+        val content = requestResponse.viewContent()
+        requestResponse.response.content= """<!DOCTYPE html>
+        <html lang="en">
+        ${content}
+        </html>"""
+        requestResponse.response.setHeader(CONTENT_TYPE, "text/html; charset=UTF-8");
+    }
+}
+
+
 public object routes
 
 fun <TItem> Iterable<TItem>.For(body:(TItem)->String):String{

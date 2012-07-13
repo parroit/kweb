@@ -231,15 +231,10 @@
     </library>
     <library name="commons-logging-1.1.1">
       <CLASSES>
-        <root url="jar://$PROJECT_DIR$/lib/commons-logging-1.1.1-bin/commons-logging-1.1.1/commons-logging-1.1.1.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/commons-logging-1.1.1-bin/commons-logging-1.1.1/commons-logging-adapters-1.1.1.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/commons-logging-1.1.1.jar!/" />
       </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/lib/commons-logging-1.1.1-bin/commons-logging-1.1.1/commons-logging-1.1.1-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/lib/commons-logging-1.1.1-bin/commons-logging-1.1.1/commons-logging-1.1.1-sources.jar!/" />
-      </SOURCES>
+      <JAVADOC />
+      <SOURCES />
     </library>
     <library name="dom4j-1.6.1">
       <CLASSES>
@@ -290,7 +285,7 @@
     </library>
     <library name="js">
       <CLASSES>
-        <root url="jar://$PROJECT_DIR$/lib/rhino1_7R3/js.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/js.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
@@ -327,11 +322,11 @@
     </library>
     <library name="netty-3.5.0.Final">
       <CLASSES>
-        <root url="jar://$PROJECT_DIR$/lib/netty-3.5.0.Final/jar/netty-3.5.0.Final.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/netty-3.5.0.Final.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES>
-        <root url="jar://$PROJECT_DIR$/lib/netty-3.5.0.Final/jar/netty-3.5.0.Final-sources.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/netty-3.5.0.Final-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="snakeyaml-1.6">

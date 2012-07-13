@@ -1,8 +1,9 @@
 package templates
 import kw.views.*
-fun layout(content:()->String) = view { """
+import sites.welcome.*
+fun layout(content:()->String) = htmlView { """
 <head>
-    <title>@title</title>
+    <title>Kweb sample:Quotes list</title>
     ${importJavascript("jquery-1.7.1.min")}
     ${importJavascript("bootstrap-alert")}
     ${importJavascript("bootstrap-modal")}
@@ -18,15 +19,16 @@ fun layout(content:()->String) = view { """
                         <div class="container">
 
                             <img class="brand" src='/public/images/ammi.png'/>
-                            <span class="name brand">Amministrazione</span>
+                            <span class="name brand">Kweb sample:quotes</span>
 
                             <ul class="nav">
                                 <li class="active">
                                     <a href="#">Home</a>
                                 </li>
-                                <li><a href="#">Fatture</a></li>
-                                <li><a href="#">Preventivi</a></li>
-                                <li><a href="@routes.Aziende.list()">Aziende</a></li>
+                                <li><a href="#">Bills</a></li>
+                                <li><a href="#">Company</a></li>
+
+                               <li><a href='${"#"/*uncommenting this I get an unresolved error, Im investingating why! App.quotes_list_page0()*/}'>Quotes</a></li>
                             </ul>
                         </div>
                     </div>
@@ -46,15 +48,7 @@ fun layout(content:()->String) = view { """
             <div class="navbar navbar-fixed-bottom">
                 <div class="navbar-inner">
                     <div class="container">
-                        @if(session.containsKey("loggedUser")) {
-
-                        <a class="pull-right" href="@routes.Application.logout()">&nbsp;Logout</a>
-                        <span class="pull-right">Sei autenticato come @session.get("loggedUser") |&nbsp;</span>
-                        } else {
-
-                        <a class="pull-right" href="@routes.Application.login()">Login</a>
-                        <span class="pull-right">Non sei autenticato. |&nbsp;</span>
-                        }
+                        A wonderful world
                     </div>
                 </div>
             </div>

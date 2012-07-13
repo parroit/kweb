@@ -6,8 +6,8 @@
         var module = module("layout-module") {
             sources += "C:/projects/KWeb/tmp/layout.kt"
             // Output directory
-            classpath += "out/test/KWeb"
             classpath += "out/production/KWeb"
+            classpath += "out/production/welcome"
             // Boot classpath
             classpath += "C:/Program Files/Java/jdk1.6.0_29/jre/lib/alt-rt.jar"
             classpath += "C:/Program Files/Java/jdk1.6.0_29/jre/lib/alt-string.jar"
@@ -27,12 +27,12 @@
             classpath += "C:/Program Files/Java/jdk1.6.0_29/jre/lib/ext/sunpkcs11.jar"
 
             classpath += "lib/kotlin-runtime.jar"
-            classpath += "lib/netty-3.5.0.Final/jar/netty-3.5.0.Final.jar"
+            classpath += "lib/netty-3.5.0.Final.jar"
             classpath += "lib/hibernate-core-4.1.4.Final.jar"
             classpath += "lib/guava-11.0.2.jar"
             classpath += "lib/dom4j-1.6.1.jar"
-            classpath += "lib/rhino1_7R3/js.jar"
-            classpath += "lib/annotations.jar"
+            classpath += "lib/js.jar"
+
 
         }
 

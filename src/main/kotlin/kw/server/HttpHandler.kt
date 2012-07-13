@@ -47,7 +47,7 @@ class HttpHandler(
     ) : SimpleChannelUpstreamHandler() {
 
     public override fun exceptionCaught(ctx: ChannelHandlerContext?, e: ExceptionEvent?) {
-        super<SimpleChannelUpstreamHandler>.exceptionCaught(ctx, e)
+        //super<SimpleChannelUpstreamHandler>.exceptionCaught(ctx, e)
         e?.getCause()?.printStackTrace()
 
 
