@@ -19,7 +19,16 @@ public fun RequestResponse.saveQuote(id:String): PageList<Quote> {
     val quote = QuotePersister.byId(id) ?:  Quote()
     quote.code=postArguments["code"].sure()[0].sure()
     quote.header=postArguments["header"].sure()[0].sure()
-    quote.customer=CompanyPersister.byId(Integer.parseInt(postArguments["customer"].sure()[0]))
+    var customer:Int
+    try {
+        customer=Integer.parseInt(postArguments["customer"].sure()[0])
+    } catch(e:Exception){
+        customer=1
+    }
+
+
+
+    quote.customer=CompanyPersister.byId(customer)
 
     QuotePersister.save(quote)
     return quotes(0)

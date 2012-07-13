@@ -208,23 +208,9 @@
   </component>
   <component name="WebServicesPlugin" addRequiredLibraries="true" />
   <component name="libraryTable">
-    <library name="annotations">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/lib/annotations.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES />
-    </library>
     <library name="antlr-2.7.7">
       <CLASSES>
         <root url="jar://$PROJECT_DIR$/lib/antlr-2.7.7.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES />
-    </library>
-    <library name="aopalliance-1.0">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/lib/aopalliance-1.0.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
@@ -313,13 +299,6 @@
         <root url="jar://$PROJECT_DIR$/lib/kotlin-runtime.jar!/src" />
       </SOURCES>
     </library>
-    <library name="log4j-1.2.16">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/lib/log4j-1.2.16.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES />
-    </library>
     <library name="netty-3.5.0.Final">
       <CLASSES>
         <root url="jar://$PROJECT_DIR$/lib/netty-3.5.0.Final.jar!/" />
@@ -328,13 +307,6 @@
       <SOURCES>
         <root url="jar://$PROJECT_DIR$/lib/netty-3.5.0.Final-sources.jar!/" />
       </SOURCES>
-    </library>
-    <library name="snakeyaml-1.6">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/lib/snakeyaml-1.6.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES />
     </library>
     <library name="sqlite-jdbc-3.6.0">
       <CLASSES>
