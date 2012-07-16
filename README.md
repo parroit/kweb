@@ -1,2 +1,1 @@
-kweb
-====
+KWeb is a new Web framework for the Kotlin language
