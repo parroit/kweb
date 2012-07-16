@@ -1,1 +1,1 @@
-KWeb is a new Web framework for the Kotlin language
+KWeb is a new kool Web framework for the Kotlin language
