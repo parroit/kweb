@@ -39,5 +39,7 @@ object App:KApplication() {
     public var save_quote:RoutesResolver1<String> =     whenPost1("/edit-quote/(.*)")       {quotes(welcome_saveQuote(urlArguments[0]))}
     public var new_quote:RoutesResolver0 =              whenGet0("/new-quote")              {editQuote(welcome_newQuote())}
 
-
+    //view to test request parameters
+    public var show_request:RoutesResolver0 =       whenGet0("/show-request")           {showRequest(getArguments,postArguments)}
+    public var show_request_post:RoutesResolver0 =       whenPost0("/show-request")           {showRequest(getArguments,postArguments)}
 }

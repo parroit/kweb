@@ -42,21 +42,10 @@ class RestBuilder() {
 }
 
 class RestProcessor(val prefix: String, val builder: RestBuilder) : Processor {
-    private fun initUrlArguments(request: RequestResponse,val matcher:Matcher){
-        request.urlArguments.clear()
-        for (i in 1 .. matcher.groupCount()){
-            request.urlArguments.add(matcher.group(i).toString())
-        }
+    //splitted and moved to RequestResponseBuilder#build and RequestResponse#initUrlArguments
+    /*private fun initUrlArguments(request: RequestResponse,val matcher:Matcher){
 
-        val content = request?.request?.getContent().sure();
-
-        if (content.readable().sure()) {
-            val param = content.toString("UTF-8");
-            val queryStringDecoder = QueryStringDecoder("/?"+param);
-            val params = queryStringDecoder.getParameters();
-            request.postArguments=params.sure()
-        }
-    }
+    }*/
 
     fun getMatches(request: RequestResponse) = request.request.getMethod() == HttpMethod.GET && builder.onGet != null
     fun postMatches(request: RequestResponse) = request.request.getMethod() == HttpMethod.POST && builder.onPost != null
@@ -82,14 +71,23 @@ class RestProcessor(val prefix: String, val builder: RestBuilder) : Processor {
     }
     override fun tryToProcess(request: RequestResponse): Boolean {
 
+
         val pattern=Pattern.compile(prefix).sure()
 
-        val matcher = pattern.matcher(request.path).sure()
+
+        //strip params from request path in order to make get arguments work
+        //on every url
+        val path = if (request.path.contains("?"))
+            request.path.subSequence(0,request.path.indexOf('?'))
+        else
+            request.path
+        println(path)
+        val matcher = pattern.matcher(path).sure()
 
         if(matcher.matches() && (postMatches(request)|| getMatches(request))) {
 
 
-            initUrlArguments(request,matcher)
+            request.initUrlArguments(matcher)
             return true;
         }
         return false

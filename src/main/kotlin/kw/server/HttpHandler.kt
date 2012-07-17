@@ -30,6 +30,7 @@ import java.nio.charset.Charset
 import javax.xml.transform.URIResolver
 import java.net.URI
 import java.net.URLDecoder
+import kw.server.RequestResponseBuilder
 
 
 class Listener(val request:RequestResponse) :ChannelFutureListener {
@@ -54,7 +55,7 @@ class HttpHandler(
     }
     fun messageReceived(ctx : ChannelHandlerContext, e : MessageEvent) {
 
-        val request = RequestResponse(e,this)
+        val request = RequestResponseBuilder().build(e,this)
         for(processor in processors) {
             if(processor.tryToProcess(request)) {
                 /*val keepAlive=HttpHeaders.isKeepAlive(e.getMessage() as HttpMessage)
@@ -66,13 +67,13 @@ class HttpHandler(
                     request.response.setHeader(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.KEEP_ALIVE);
                 }*/
                 val message = e.getMessage()as DefaultHttpRequest
-                val content=message.getContent()
+                //val content=message.getContent()
 
                 val buff=java.io.ByteArrayOutputStream()
-                content?.readBytes(buff,content?.readableBytes().sure())
-                val toString = buff.toString(Charset.defaultCharset()?.name())
+                //content?.readBytes(buff,content?.readableBytes().sure())
+                //val toString = buff.toString(Charset.defaultCharset()?.name())
                 message.setChunked(false)
-                URLDecoder.decode(toString)
+                //URLDecoder.decode(toString)
 
                 val future=processor.write(request)
                 //if (!keepAlive)

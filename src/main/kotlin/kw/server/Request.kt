@@ -24,6 +24,7 @@ import java.util.concurrent.Future
 import org.jboss.netty.handler.codec.http.HttpResponse
 import java.util.Map
 import java.util.HashMap
+import java.util.regex.Matcher
 
 public class RequestResponse(e: MessageEvent,handler:HttpHandler) {
     public val request :HttpRequest  = e.getMessage() as HttpRequest
@@ -35,6 +36,13 @@ public class RequestResponse(e: MessageEvent,handler:HttpHandler) {
     public val urlArguments:List<String> = ArrayList()
     public var postArguments:Map<String?, List<String?>?> = HashMap<String?, List<String?>?>()
     public var getArguments:Map<String?, List<String?>?> = HashMap<String?, List<String?>?>()
+
+    public fun initUrlArguments(val matcher:Matcher){
+        urlArguments.clear()
+        for (i in 1 .. matcher.groupCount()){
+            urlArguments.add(matcher.group(i).toString())
+        }
+    }
 
     public fun setError(status: HttpResponseStatus?) {
         response.setStatus(status)
