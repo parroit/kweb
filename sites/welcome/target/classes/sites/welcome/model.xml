@@ -1,0 +1,30 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+
+    <class name="sites.welcome.model.Company"  table="Company">
+        <meta attribute="header">Customers</meta>
+        <id name="code">
+            <meta attribute="header">Customer id.</meta></id>
+        <property name="name"/>
+        <property name="customer"/>
+
+    </class>
+
+    <class name="sites.welcome.model.Quote" table="Quote" node="">
+        <id name="code">
+            <meta attribute="header">Document id.</meta></id>
+
+        <property name="header"/>
+        <property name="createdOn" />
+        <property name="lastEditedOn"/>
+        <property name="year"/>
+        <many-to-one name="customer"/>
+    </class>
+
+</hibernate-mapping>
+
