@@ -5,6 +5,7 @@ import org.junit.Test
 import java.io.File
 import org.junit.Assert
 import java.util.Date
+import org.junit.Ignore
 
 
 /**
@@ -80,7 +81,9 @@ public class CompileViewTest {
         Assert.assertFalse(compiler.viewOutdated(viewName))
     }
 
-    Test public fun compileCreateOutFile(){
+
+    //TODO unignore to run compilation
+    Ignore Test public fun compileCreateOutFile(){
         val file = File(compiler.outFolder,"templates/namespace$${viewName}$1.class")
         if (file.exists())
             Assert.assertTrue(file.delete())
