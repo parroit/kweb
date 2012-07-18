@@ -4,7 +4,7 @@
                 fun project() {
         }
         var module = module("layout-module") {
-            sources += "C:/projects/KWeb/tmp/layout.kt"
+            sources += "/home/descottl/dev/kweb/tmp/layout.kt"
             // Output directory
             classpath += "out/production/KWeb"
             classpath += "out/production/welcome"

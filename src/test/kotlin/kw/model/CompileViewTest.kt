@@ -5,6 +5,7 @@ import org.junit.Test
 import java.io.File
 import org.junit.Assert
 import java.util.Date
+import org.junit.Ignore
 
 
 /**
@@ -12,7 +13,8 @@ import java.util.Date
  * Created: 01/07/12 10.23
  */
 public class CompileViewTest {
-    val compiler=CompileView(File("sites/welcome/src/main/kweb-kotlin/views"))
+    val path = "sites/welcome/src/main/resources/views";
+    val compiler=CompileView(File(path))
     val viewName="layout"
 
     Test public fun viewSourceExists(){
@@ -25,7 +27,7 @@ public class CompileViewTest {
         }
 
         Assert.assertTrue(compiler.outFolder.delete())
-        val otherCompiler=CompileView(File("sites/welcome/src/main/kweb-kotlin/views"))
+        val otherCompiler=CompileView(File(path))
         Assert.assertTrue(otherCompiler.outFolder.exists())
     }
 
@@ -36,7 +38,7 @@ public class CompileViewTest {
         }
 
         Assert.assertTrue(compiler.tmpFolder.delete())
-        val otherCompiler=CompileView(File("sites/welcome/src/main/kweb-kotlin/views"))
+        val otherCompiler=CompileView(File(path))
         Assert.assertTrue(otherCompiler.tmpFolder.exists())
     }
 
@@ -79,7 +81,9 @@ public class CompileViewTest {
         Assert.assertFalse(compiler.viewOutdated(viewName))
     }
 
-    Test public fun compileCreateOutFile(){
+
+    //TODO unignore to run compilation
+    Ignore Test public fun compileCreateOutFile(){
         val file = File(compiler.outFolder,"templates/namespace$${viewName}$1.class")
         if (file.exists())
             Assert.assertTrue(file.delete())
