@@ -1,4 +1,8 @@
-/**
- * Author: parroit
- * Created: 21/07/12 10.32
- */
+package sites.welcome
+import org.junit.Test
+
+public class RunSample{
+    public Test fun runWelcome() {
+        runSample()
+    }
+}

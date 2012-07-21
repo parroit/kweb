@@ -1,8 +1,10 @@
 package templates
 import kw.views.*
 import io.kool.template.html.*
-fun layout(content:() -> String) = view {
-    html{
+fun layout(content:() -> String) = view { "<html><body>${content()}</body><html>"
+   //TODO:both idea IDE, idea compilation and maven compilation
+   //hangs if I uncomment this
+   /* html{
        head{
         title("Kweb Kool template sample:Quotes list")
         this + importJavascript("jquery-1.7.1.min")
@@ -61,6 +63,8 @@ fun layout(content:() -> String) = view {
 
 				}
 			}
-		}
-	}.toString()!!
+	    }
+	}
+    }
+}.toString()!!   */
 }

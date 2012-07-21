@@ -168,16 +168,16 @@ public open class KApplication() {
 
     public fun startDebug() {
 
-
-       //I did not manage how to compile views here.
-       //for now, use CompileViewTest#compileCreateOutFile
-       //in order to compile layout.html.kt
-
+       //TODO: make view compilation work smoothly
        /* val compiler=CompileView(File("sites/welcome/src/main/kweb-kotlin/views"))
         if (compiler.viewOutdated("layout"))
+           //I did not manage how to compile views here.
+           //for now, use CompileViewTest#compileCreateOutFile
+           //in order to compile layout.html.kt
+
             compiler.recompile("layout")
         else
-        {*/
+        {
             val dest = File("out/production/welcome/templates/namespace\$layout\$1.class")
             if (dest.exists())
                 dest.delete()
@@ -189,7 +189,7 @@ public open class KApplication() {
             File("html/templates/namespace.class").copyTo(dest2)
 
 
-       /* }*/
+        }*/
 
         rest("(.*)") {
             get{Renderer404(urlArguments[0])}

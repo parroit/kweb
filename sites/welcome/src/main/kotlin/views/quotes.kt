@@ -41,7 +41,7 @@ fun editQuote(qt: Quote) = layout {"""
 fun metaField(property:Property,instance:Any)=
     btInput(name=property.getName().sure(),inputType="text",legend=property.header(),value=property.escape(instance))
 
-fun quotes(qts: PageList<Quote>) = layout {"""
+fun quotes(qts: PageList<Quote>) = layout { """
    <p>
    ${button(App.new_quote.resolve(), Flavours("primary")){"create"}}
    </p>

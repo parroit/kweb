@@ -133,27 +133,27 @@ public class FieldTypeManagerTest {
 
     @Test
     public void zeroDecimalFormattedAsZero() {
-        Assert.assertEquals(doubleType.toEngineValue(0.0), "0.0");
+        Assert.assertEquals(doubleType.toEngineValue(0.0), "0,0");
     }
 
     @Test
     public void positiveDecimalFormattedAsNumber() {
-        Assert.assertEquals(doubleType.toEngineValue(12340.0), "12340.0");
+        Assert.assertEquals(doubleType.toEngineValue(12340.0), "12340,0");
     }
 
     @Test
     public void negativeDecimalFormattedWithSign() {
-        Assert.assertEquals(doubleType.toEngineValue(-12340.0), "-12340.0");
+        Assert.assertEquals(doubleType.toEngineValue(-12340.0), "-12340,0");
     }
 
     @Test
     public void positiveDecimalPreservedFormattedAsNumber() {
-        Assert.assertEquals(doubleType.toEngineValue(12340.123456), "12340.123456");
+        Assert.assertEquals(doubleType.toEngineValue(12340.123456), "12340,123456");
     }
 
     @Test
     public void negativeDecimalPreservedFormattedWithSign() {
-        Assert.assertEquals(doubleType.toEngineValue(-12340.123456), "-12340.123456");
+        Assert.assertEquals(doubleType.toEngineValue(-12340.123456), "-12340,123456");
     }
 
 

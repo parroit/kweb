@@ -8,11 +8,9 @@ import java.util.Date
 import org.junit.Ignore
 
 
-/**
- * Author: parroit
- * Created: 01/07/12 10.23
- */
-public class CompileViewTest {
+
+//TODO unignore to run compilation
+Ignore  public class CompileViewTest {
     val path = "sites/welcome/src/main/resources/views";
     val compiler=CompileView(File(path))
     val viewName="layout"
@@ -82,8 +80,7 @@ public class CompileViewTest {
     }
 
 
-    //TODO unignore to run compilation
-    Ignore Test public fun compileCreateOutFile(){
+    Test public fun compileCreateOutFile(){
         val file = File(compiler.outFolder,"templates/namespace$${viewName}$1.class")
         if (file.exists())
             Assert.assertTrue(file.delete())

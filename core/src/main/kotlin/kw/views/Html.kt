@@ -1,3 +1,6 @@
+//kool.template should substitute this in a kooler way!
+
+/*
 package kw.views
 
 import java.util.ArrayList
@@ -144,5 +147,6 @@ public fun html(init : HTML.() -> Unit) : HTML {
     html.init()
     return html
 }
+*/
 
 

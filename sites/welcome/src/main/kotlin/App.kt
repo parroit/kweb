@@ -15,11 +15,14 @@ import java.io.File
 import kw.server.KApplication.Renderer404
 import templates.layout
 
-
-public fun main(args: Array<String>) {
+public fun runSample(){
     Desktop.getDesktop()?.browse(URI.create("http://localhost:8080/quotes"))
 
     App.startDebug()
+}
+
+public fun main(args: Array<String>) {
+    runSample()
 }
 
 object App:KApplication() {
