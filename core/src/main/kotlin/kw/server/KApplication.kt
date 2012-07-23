@@ -33,7 +33,7 @@ import kw.server.compile.CompileView
 public open class KApplication() {
     public var port: Int = 8080
     val processors = LinkedList<Processor>();
-    public var not_found_layout: ((()->String)->Any)? = null
+    public var not_found_layout: (RequestResponse.(()->String)->Any)? = null
 
     public fun whenPost0(url:String,result:RequestResponse.()-> Renderer):RoutesResolver0{
         rest(url) {
@@ -139,7 +139,7 @@ public open class KApplication() {
             if (not_found_layout != null)
             {
                 val layout = not_found_layout.sure()
-                val result = layout(error404(url))
+                val result = requestResponse.layout(error404(url))
                 if (isRenderer(result ))
                 {
                     asRenderer(result).render(requestResponse)

@@ -69,7 +69,7 @@ class HttpHandler(
                 val message = e.getMessage()as DefaultHttpRequest
                 //val content=message.getContent()
 
-                val buff=java.io.ByteArrayOutputStream()
+               //val buff=java.io.ByteArrayOutputStream()
                 //content?.readBytes(buff,content?.readableBytes().sure())
                 //val toString = buff.toString(Charset.defaultCharset()?.name())
                 message.setChunked(false)

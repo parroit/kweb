@@ -1,70 +1,97 @@
-package templates
-import kw.views.*
-import io.kool.template.html.*
-fun layout(content:() -> String) = view { "<html><body>${content()}</body><html>"
-   //TODO:both idea IDE, idea compilation and maven compilation
-   //hangs if I uncomment this
-   /* html{
-       head{
-        title("Kweb Kool template sample:Quotes list")
-        this + importJavascript("jquery-1.7.1.min")
-        this + importJavascript("bootstrap-alert")
-        this + importJavascript("bootstrap-modal")
-        this + importLess("bootstrap")
+package sites.welcome.views
 
-       }
-       body{
+import sites.welcome.*
+import io.kool.template.html.*
+import java.io.StringReader
+import kotlin.dom.*
+import kw.views.*
+import org.cyberneko.html.parsers.DOMFragmentParser
+import org.junit.Test
+import org.w3c.dom.*
+import org.xml.sax.InputSource
+
+fun Node.unescaped(text: String) {
+
+
+    val parser = DOMFragmentParser ();
+    val fragment = ownerDocument().createDocumentFragment()!!;
+    parser.parse(InputSource(StringReader(text)), fragment)
+
+
+    if (this.nodeType == Node.ELEMENT_NODE) {
+        var node = fragment.firstChild
+        while (node != null)
+        {
+            val nextNode = node?.nextSibling
+            appendChild(node)
+            node = nextNode
+        }
+    }
+
+
+}
+
+
+fun layout(content: () -> String) = view {
+    html {
+        head{
+            title("Kweb Kool template sample:Quotes list")
+            unescaped(
+                    importJavascript("jquery-1.7.1.min") +
+                    importJavascript("bootstrap-alert") +
+                    importJavascript("bootstrap-modal") +
+                    importLess("bootstrap")
+            )
+
+        }
+        body{
             div(klass="container"){
                 div (id="header", klass="row"){
                     div (klass="span12")  {
                         div (klass="navbar navbar-fixed-top"){
-							div (klass="navbar-inner"){
-								div (klass="container"){
+                            div (klass="navbar-inner"){
+                                div (klass="container"){
 
-									img(klass="brand", src='/public/images/ammi.png')
-									span(klass="name brand"){
-										+"Kweb sample:quotes/span"
-									}
-
-									ul (klass="nav"){
-									li (klass="active"){
-                                        a (href="#",text="Home/a")
-
-                                        li {a( href="#",text="Bills")}
-                                        li {a( href="#",text= Company)}
-
-                                        li {a( href=App.quotes_list_page0(), text= "Quotes")}
-									
-								}
-
-							}
-
-						}
-					}
-				}
+                                    img(klass="brand", src="/public/images/ammi.png")
 
 
-				div (id="content", klass="row"){
-					div (klass="span12"){
-						this + content()
-					}
+                                    span(klass="name brand"){
+                                        this+"Kweb sample:quotes/span"
+                                    }
 
-				}
+                                     ul (klass="nav"){
+                                         li (klass="active"){a (href="/",text="Home")}
+                                        /* li {a( href=App.quotes_list_page0(), text= "Quotes")}*/
+                                         li {a( href="#",text="Bills")}
+                                         li {a( href="#",text="Company")}
+                                     }
 
-				div (id="footer"){
 
-					div (klass="navbar navbar-fixed-bottom"){
-						div (klass="navbar-inner"){
-							div (klass="container"){
-								+ "A wonderful world"
-							}
-						}
-					}
+                                }
+                            }
+                        }
+                    }
+                }
+                div (id = "content", klass = "row"){
+                    div (klass = "span12"){
+                        unescaped(content())
+                    }
+                }
 
-				}
-			}
-	    }
-	}
-    }
-}.toString()!!   */
+                div (id="footer"){
+
+                    div (klass="navbar navbar-fixed-bottom"){
+                        div (klass="navbar-inner"){
+                            div (klass="container"){
+                                this + "A wonderful world"
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+    }.toXmlString()!!
 }
+
+

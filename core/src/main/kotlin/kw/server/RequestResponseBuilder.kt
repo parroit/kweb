@@ -10,7 +10,7 @@ import kotlin.template.HtmlFormatter
 
 class RequestResponseBuilder(){
     fun initPostArguments(request: RequestResponse) {
-        val content = request?.request?.getContent().sure();
+        val content = request.request.getContent().sure();
 
         if (content.readable().sure()) {
             val param = content.toString("UTF-8");
@@ -19,7 +19,7 @@ class RequestResponseBuilder(){
     }
 
     fun initGetArguments(request: RequestResponse) {
-        val uri = request?.request?.getUri().sure();
+        val uri = request.request.getUri().sure();
 
         request.getArguments = decodeAndSanitize(uri)
     }
@@ -42,8 +42,8 @@ class RequestResponseBuilder(){
     public fun decodeAndSanitize(params:String):Map<String?, List<String?>?>
     {
         val queryStringDecoder = QueryStringDecoder(params);
-        val params = queryStringDecoder.getParameters();
-        for (pair in params) {
+        val parameters = queryStringDecoder.getParameters();
+        for (pair in parameters) {
 
             val values= pair.value.sure()
 
@@ -54,7 +54,7 @@ class RequestResponseBuilder(){
 
 
         }
-        return params.sure()
+        return parameters.sure()
     }
 
 

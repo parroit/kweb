@@ -8,7 +8,7 @@ import org.hibernate.Criteria
 import org.hibernate.criterion.Restrictions
 import kw.server.Persister
 
-import kw.model.described
+//import kw.model.described
 import kw.model.ReferenceFieldValue
 
 public object QuotePersister:Persister<Quote>(javaClass<Quote>(),WelcomeModel){

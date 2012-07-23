@@ -16,7 +16,7 @@ import java.util.HashMap
 import com.google.common.collect.Maps
 import java.util.Map
 import org.hibernate.mapping.MetaAttribute
-import templates.layout
+
 
 
 fun editQuote(qt: Quote) = layout {"""

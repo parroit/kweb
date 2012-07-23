@@ -1,6 +1,6 @@
 package sites.welcome.views
 
-import templates.layout
+
 import java.util.List
 import java.util.Map
 

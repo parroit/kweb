@@ -10,6 +10,12 @@
 
     <repositories>
         <repository>
+
+            <id>local-deploy</id>
+            <url>file://../../local-repo</url>
+
+        </repository>
+		<repository>
             <id>jetbrains-all</id>
             <url>http://repository.jetbrains.com/all</url>
         </repository>
@@ -17,12 +23,7 @@
             <id>fusesource-snapshots</id>
             <url>http://repo.fusesource.com/nexus/content/groups/public-snapshots/</url>
         </repository>
-        <repository>
-
-            <id>local-deploy</id>
-            <url>file://local-repo</url>
-
-        </repository>
+        
     </repositories>
     <distributionManagement>
         <repository>
@@ -43,6 +44,11 @@
 
     <dependencies>
         <dependency>
+			<groupId>net.sourceforge.nekohtml</groupId>
+			<artifactId>nekohtml</artifactId>
+			<version>1.9.15</version>
+		</dependency>
+		<dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib</artifactId>
             <version>${kotlin.version}</version>

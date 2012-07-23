@@ -27,8 +27,8 @@ public open class PersistentHelper(packageName:String,configurationResource:Stri
         val factory = configuration.buildSessionFactory().sure()
         val mapsIterator = configuration.getClassMappings()
         while (mapsIterator?.hasNext().sure()){
-            val next = mapsIterator?.next().sure()
-            maps.put(next?.getClassName().sure(),next)
+            val next = mapsIterator?.next()!!
+            maps.put(next.getClassName().sure(),next)
         }
         factory
     }();

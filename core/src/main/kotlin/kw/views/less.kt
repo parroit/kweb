@@ -46,49 +46,24 @@ import org.hibernate.mapping.PersistentClass
 import org.hibernate.mapping.Property
 import kw.model.FieldTypeManager
 
-fun RequestResponse.importJavascript(fileName:String)=
-"<script src='${staticBase}/javascripts/${fileName}.js' type='text/javascript'></script>"
-fun RequestResponse.importCss(fileName:String)=
-"<link rel='stylesheet' href='${staticBase}/stylesheets/${fileName}.css'>"
-fun RequestResponse.importLess(fileName:String)=
-"<link rel='stylesheet' href='/stylesheets/${fileName}.css'>"
-
-public class view(private val viewContent:RequestResponse.()->String):Renderer {
+/**
+    Allow
+*/
+public class less(private val filePath:String):Renderer {
     public override fun render(requestResponse: RequestResponse){
-        val content = requestResponse.viewContent()
-        requestResponse.response.content= content
-        requestResponse.response.setHeader(CONTENT_TYPE, "text/html; charset=UTF-8");
+        val engine = LessEngine();
+
+        val fileTarget = File(File("./public"), filePath).getAbsoluteFile()
+        val fileSource = File(File("./less"), filePath.replace(".css", ".less")).getAbsoluteFile()
+
+        if (!(fileTarget?.exists()!!))
+            engine.compile(fileSource,fileTarget)
+
+        var raf = RandomAccessFile(fileTarget, "r")
+        val fileLength = raf.length()
+        requestResponse.response["Content-Length"] = fileLength
+        requestResponse.channel.write(requestResponse.response)
+        requestResponse.channel.write(DefaultFileRegion(raf.getChannel(), 0, fileLength))
+
     }
 }
-public class htmlView(private val viewContent:RequestResponse.()->String):Renderer {
-    public override fun render(requestResponse: RequestResponse){
-        val content = requestResponse.viewContent()
-        requestResponse.response.content= """<!DOCTYPE html>
-        <html lang="en">
-        ${content}
-        </html>"""
-        requestResponse.response.setHeader(CONTENT_TYPE, "text/html; charset=UTF-8");
-    }
-}
-
-
-public object routes
-
-/* moved to For.kt
-fun <TItem> Iterable<TItem>.For(body:(TItem)->String):String{
-
-} */
-public trait Renderer{
-    public fun render(requestResponse: RequestResponse)
-}
-public fun isRenderer(any:Any):Boolean=any is Renderer
-public fun asRenderer(any:Any):Renderer=any as Renderer
-
-
-//moved to escape.kt
-/*
-fun Property?.escape<TModel>(instance: TModel): String {
-  }
-trait Escaper{
-
-}*/

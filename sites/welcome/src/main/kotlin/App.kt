@@ -13,7 +13,7 @@ import sites.welcome.controllers.quotes as welcome_quotes
 import sites.welcome.views.*
 import java.io.File
 import kw.server.KApplication.Renderer404
-import templates.layout
+
 
 public fun runSample(){
     Desktop.getDesktop()?.browse(URI.create("http://localhost:8080/quotes"))
