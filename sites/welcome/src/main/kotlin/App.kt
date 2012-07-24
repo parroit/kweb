@@ -26,9 +26,8 @@ public fun main(args: Array<String>) {
 }
 
 object App:KApplication() {
-    public  KApplication (){
-        not_found_layout={url->layout(url)}
-    }
+    
+    
     public var staticFiles:RoutesResolver1<Int> = RoutesResolver1<Int>(staticFiles("/public", File("./public").getAbsolutePath().sure()))
 
     public var root :RoutesResolver0=                   redirect0("/")                      {"/index/0"}

@@ -30,11 +30,12 @@ import kw.server.compile.CompileView
 * Created: 28/06/12 10.55
 */
 
-public open class KApplication() {
+public open abstract class KApplication() {
     public var port: Int = 8080
     val processors = LinkedList<Processor>();
-    public var not_found_layout: (RequestResponse.(()->String)->Any)? = null
-
+    
+	
+	
     public fun whenPost0(url:String,result:RequestResponse.()-> Renderer):RoutesResolver0{
         rest(url) {
             post {result()}
@@ -136,29 +137,10 @@ public open class KApplication() {
 
     class Renderer404(var url: String): kw.views.Renderer{
         public override fun render(requestResponse: RequestResponse) {
-            if (not_found_layout != null)
-            {
-                val layout = not_found_layout.sure()
-                val result = requestResponse.layout(error404(url))
-                if (isRenderer(result ))
-                {
-                    asRenderer(result).render(requestResponse)
 
-                } else
-                {
-                    requestResponse.response.content = result.toString()
-                    requestResponse.response.setHeader(HttpHeaders.Names.CONTENT_TYPE, "text/html; charset=UTF-8");
-                }
-
-
-
-
-            } else
-            {
-                requestResponse.response.content = error404(url)
-                requestResponse.response.setHeader(HttpHeaders.Names.CONTENT_TYPE, "text/plain; charset=UTF-8");
-            }
-
+            requestResponse.response.content = error404(url)
+            requestResponse.response.setHeader(HttpHeaders.Names.CONTENT_TYPE, "text/plain; charset=UTF-8");
+            
             requestResponse.response.setStatus(HttpResponseStatus.NOT_FOUND)
 
 

@@ -12,7 +12,7 @@ import org.junit.Ignore
 //TODO unignore to run compilation
 Ignore  public class CompileViewTest {
     val path = "sites/welcome/src/main/resources/views";
-    val compiler=CompileView(File(path))
+    val compiler=kw.server.compile.CompileView(File(path))
     val viewName="layout"
 
     Test public fun viewSourceExists(){
