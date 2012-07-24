@@ -4,10 +4,10 @@ import sites.welcome.*
 import io.kool.template.html.*
 import java.io.StringReader
 import kotlin.dom.*
+import org.w3c.dom.*
 import kw.views.*
 import org.cyberneko.html.parsers.DOMFragmentParser
 import org.junit.Test
-import org.w3c.dom.*
 import org.xml.sax.InputSource
 
 fun Node.unescaped(text: String) {
