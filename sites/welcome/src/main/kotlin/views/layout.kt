@@ -33,7 +33,8 @@ fun Node.unescaped(text: String) {
 
 
 fun layout(content: () -> String) = view {
-    html {
+    "<!DOCTYPE html>"+
+	html {
         head{
             title("Kweb Kool template sample:Quotes list")
             unescaped(
