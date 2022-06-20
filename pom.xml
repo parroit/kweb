@@ -107,6 +107,6 @@
         </plugins>
     </build>
     <properties>
-        <kotlin.version>0.1.2580</kotlin.version>
+        <kotlin.version>1.6.0</kotlin.version>
     </properties>
 </project>
